@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="RequestsApp.Mobile.Views.MainPage"
+            Title="Заявки">
+
+    <ContentPage Title="Мои заявки">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Button Grid.Row="0" Text="Новая заявка" BackgroundColor="#27AE60" TextColor="White"
+                    CornerRadius="8" HeightRequest="50" Margin="10" x:Name="btnNewRequest"/>
+
+            <Button Grid.Row="1" Text="Удалить" BackgroundColor="#E74C3C" TextColor="White"
+                    CornerRadius="8" HeightRequest="40" Margin="10,0,10,10" x:Name="btnDelete"/>
+
+            <CollectionView x:Name="cvRequests" Grid.Row="2" Margin="10"
+                            SelectionMode="Single" SelectionChanged="OnRequestSelected"/>
+        </Grid>
+    </ContentPage>
+
+    <ContentPage Title="Создать заявку">
+        <ScrollView>
+            <VerticalStackLayout Padding="20" Spacing="15">
+                <Label Text="ФИО заявителя" FontAttributes="Bold"/>
+                <Entry x:Name="txtCitizenName"/>
+
+                <Label Text="Телефон" FontAttributes="Bold"/>
+                <Entry x:Name="txtPhone" Keyboard="Telephone"/>
+
+                <Label Text="Категория" FontAttributes="Bold"/>
+                <Picker x:Name="pickerCategory"/>
+
+                <Label Text="Описание проблемы" FontAttributes="Bold"/>
+                <Editor x:Name="txtDescription" HeightRequest="120"/>
+
+                <Button Text="Отправить" BackgroundColor="#27AE60" TextColor="White"
+                        CornerRadius="8" HeightRequest="50" x:Name="btnSubmit"/>
+            </VerticalStackLayout>
+        </ScrollView>
+    </ContentPage>
+
+    <ContentPage Title="Профиль">
+        <VerticalStackLayout Padding="20" Spacing="15">
+            <Border Stroke="#E0E0E0" StrokeThickness="1" StrokeShape="RoundRectangle 10" Padding="20">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Пользователь" FontSize="16" FontAttributes="Bold"/>
+                    <Label x:Name="lblEmail" FontSize="14"/>
+                </VerticalStackLayout>
+            </Border>
+            <Button Text="Выход" BackgroundColor="#E74C3C" TextColor="White"
+                    CornerRadius="8" HeightRequest="50" x:Name="btnLogout"/>
+        </VerticalStackLayout>
+    </ContentPage>
+</TabbedPage>
